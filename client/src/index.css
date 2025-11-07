@@ -1,26 +1,80 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --bg: #0b1020;
-  --panel: #0f1724;
-  --muted: #9aa4b2;
-  --accent: #7c3aed;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-body {
-  background: linear-gradient(180deg, #071029 0%, #0b1020 100%);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #1f1c2c, #928dab);
+  color: #fff;
+  transition: background 0.5s ease;
 }
 
-/* Editor container sizing */
-.editor-wrap {
-  min-height: 420px;
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  animation: slideDown 0.8s ease;
 }
 
-/* Output pre style */
-.output-pre {
-  white-space: pre-wrap;
-  word-break: break-word;
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff6f61;
 }
+
+.tagline {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Main Container */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Editor Panel */
+.editor-panel {
+  width: 80%;
+  min-height: 200px;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  resize: vertical;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.editor-panel:focus {
+  outline: none;
+  transform: scale(1.02);
+}
+
+/* Analyze Button */
+.analyze-btn {
+  padding: 0.8rem 2rem;
+  background: #ff6f61;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s
