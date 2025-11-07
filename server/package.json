@@ -1,0 +1,19 @@
+{
+  "name": "codesense-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@ai-sdk/perplexity": "^2.0.17",
+    "ai": "^5.0.89",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "openai": "^4.104.0",
+    "perplexityai": "^1.0.1"
+  }
+}

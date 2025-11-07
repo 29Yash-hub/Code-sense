@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b1020;
+  --panel: #0f1724;
+  --muted: #9aa4b2;
+  --accent: #7c3aed;
+}
+
+body {
+  background: linear-gradient(180deg, #071029 0%, #0b1020 100%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+}
+
+/* Editor container sizing */
+.editor-wrap {
+  min-height: 420px;
+}
+
+/* Output pre style */
+.output-pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
