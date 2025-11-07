@@ -3,7 +3,8 @@ import axios from "axios";
 import Navbar from "./components/Navbar";
 import EditorPanel from "./components/EditorPanel";
 import OutputPanel from "./components/OutputPanel";
-import "./App.css";
+import "./index.css";
+
 
 function App() {
   const [code, setCode] = useState("");
