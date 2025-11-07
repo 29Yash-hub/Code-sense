@@ -15,7 +15,7 @@ export default function App() {
     setLoading(true)
     setOutput('Analyzing...')
     try {
-      const res = await axios.post('http://localhost:5000/analyze', { prompt: code })
+      const res = await axios.post('https://code-sense-d91t.onrender.com', { prompt: code })
 
       setOutput(res.data.result)
     } catch (err) {
