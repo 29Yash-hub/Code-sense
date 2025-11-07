@@ -5,7 +5,6 @@ import EditorPanel from "./components/EditorPanel";
 import OutputPanel from "./components/OutputPanel";
 import "./index.css";
 
-
 function App() {
   const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
@@ -22,7 +21,7 @@ function App() {
 
     try {
       const res = await axios.post(
-        "https://code-sense-d91t.onrender.com/analyze", // backend URL
+        "https://code-sense-d91t.onrender.com/analyze", // Backend URL
         { prompt: code },
         { headers: { "Content-Type": "application/json" } }
       );
