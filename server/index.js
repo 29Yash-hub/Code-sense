@@ -2,21 +2,22 @@ import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import { createPerplexity } from "@ai-sdk/perplexity";
+import { generateText } from "ai";
 
 const app = express();
 
-// ✅ CORS: only allow your frontend URL
+// ✅ CORS: only allow your frontend
 app.use(cors({
-  origin: "https://code-sense-rouge.vercel.app" // frontend URL
+  origin: "https://code-sense-rouge.vercel.app",
 }));
 
 app.use(express.json());
 
-// ✅ Create Perplexity client
-const client = createPerplexity({
+const perplexity = createPerplexity({
   apiKey: process.env.PERPLEXITY_API_KEY || "YOUR_API_KEY_HERE",
 });
 
+// ✅ /analyze endpoint
 app.post("/analyze", async (req, res) => {
   try {
     const { prompt } = req.body;
@@ -27,14 +28,12 @@ app.post("/analyze", async (req, res) => {
 
     console.log("📩 Prompt received:", prompt);
 
-    // ✅ Generate text using Perplexity
-    const result = await client.generate({
+    const result = await generateText({
+      model: perplexity("sonar"),
       prompt,
-      model: "sonar" // ya "sonar-pro"
     });
 
     console.log("✅ Perplexity response:", result.text);
-
     res.json({ result: result.text });
   } catch (err) {
     console.error("❌ Perplexity error:", err);
@@ -43,6 +42,6 @@ app.post("/analyze", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () =>
+  console.log(`✅ Server running on port ${PORT}`)
+);
