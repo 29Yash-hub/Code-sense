@@ -1,6 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
-import "./App.css"; // tumhara original CSS aur animations yahan include honge
+import Navbar from "./components/Navbar";
+import EditorPanel from "./components/EditorPanel";
+import OutputPanel from "./components/OutputPanel";
+import "./App.css";
 
 function App() {
   const [code, setCode] = useState("");
@@ -18,13 +21,9 @@ function App() {
 
     try {
       const res = await axios.post(
-        "https://code-sense-d91t.onrender.com/analyze", // Render backend URL + /analyze
+        "https://code-sense-d91t.onrender.com/analyze", // backend URL
         { prompt: code },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        { headers: { "Content-Type": "application/json" } }
       );
       setOutput(res.data.result);
     } catch (err) {
@@ -37,26 +36,14 @@ function App() {
 
   return (
     <div className="app-container">
-      <header className="app-header">
-        <h1 className="app-title">Code Sense Analyzer</h1>
-      </header>
-
-      <main className="app-main">
-        <textarea
-          className="code-input"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          placeholder="Enter your code or text..."
-        />
+      <Navbar />
+      <div className="main-container">
+        <EditorPanel code={code} setCode={setCode} />
         <button className="analyze-btn" onClick={analyze} disabled={loading}>
           {loading ? "Analyzing..." : "Analyze"}
         </button>
-        <pre className="output-panel">{output}</pre>
-      </main>
-
-      <footer className="app-footer">
-        <p>Powered by Code Sense</p>
-      </footer>
+        <OutputPanel output={output} />
+      </div>
     </div>
   );
 }
